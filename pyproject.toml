@@ -1,0 +1,55 @@
+[project]
+name = "meetpoint"
+version = "0.1.0"
+description = "Networking at events, with contact sharing by mutual consent."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "SQLAlchemy==2.0.55",
+    "psycopg[binary]==3.3.6",
+    "alembic==1.20.1",
+    "uvicorn==0.54.0",
+    "pydantic-settings==2.16.2",
+    "email-validator==2.3.0",
+    "qrcode==8.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "pytest-cov==7.1.0", "httpx==0.28.1", "ruff==0.17.3"]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+relative_files = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+
+[tool.coverage.html]
+directory = "reports/html"
+
+[tool.coverage.xml]
+output = "reports/coverage.xml"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/routers/*.py" = ["B008"]

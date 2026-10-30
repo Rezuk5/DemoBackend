@@ -1,0 +1,13 @@
+.venv/
+.local/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+/PLAN.md
+.coverage*
+/reports/
+*.egg-info/
+dist/
+build/

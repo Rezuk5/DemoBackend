@@ -1,0 +1,12 @@
+.venv
+.local
+.git
+.env
+**/__pycache__
+.pytest_cache
+.ruff_cache
+PLAN.md
+.coverage*
+reports
+.github
+docs
